@@ -10,18 +10,22 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building project...'
+                bat 'echo Build step completed!'
             }
         }
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'python app.py'   // On Windows, change to 'bat' if needed
+                // Run your Python script using Windows command
+                bat 'python app.py'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
+                bat 'echo Deployment step done!'
             }
         }
     }
 }
+
