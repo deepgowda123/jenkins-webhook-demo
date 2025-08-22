@@ -17,7 +17,8 @@ pipeline {
             steps {
                 echo 'Running tests...'
                 // Run your Python script using Windows command
-                bat 'python app.py'
+                bat '"C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe" app.py'
+
             }
         }
         stage('Deploy') {
