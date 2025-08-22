@@ -1,10 +1,15 @@
 pipeline {
     agent any
-    
+
+    options {
+        skipDefaultCheckout()   // disable default checkout so we control it
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/deepgowda123/jenkins-webhook-demo.git'
+                // Always checkout from GitHub
+                checkout scm
             }
         }
         stage('Build') {
@@ -16,9 +21,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Run your Python script using Windows command
                 bat '"C:/Users/HP/AppData/Local/Programs/Python/Python312/python.exe" app.py'
-
             }
         }
         stage('Deploy') {
